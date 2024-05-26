@@ -1,7 +1,7 @@
 'use client';
 
 // Importiere benötigte Firebase-Module
-import { auth } from './../utils/firebase-config'; // Korrekte Pfadangabe beachten
+import { auth } from '../lib/firebase-config'; // Korrekte Pfadangabe beachten
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const Login = () => {
