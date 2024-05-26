@@ -1,10 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function Lobby() {
   const router = useRouter();
-  const { key } = router.query; // Extrahiere den Lobby-Code aus der URL
+  const { key } = router.query;
 
   return (
     <div className="container">
