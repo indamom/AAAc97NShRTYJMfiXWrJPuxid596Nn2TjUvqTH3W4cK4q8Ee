@@ -1,4 +1,4 @@
-import { db } from '../../lib/firebase-config';
+import { db } from '../../../lib/firebase-config';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
