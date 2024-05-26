@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { auth } from '../../lib/firebase-config'; // Korrekte Pfadangabe beachten
+import { auth } from './../lib/firebase-config'; // Korrekte Pfadangabe beachten
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { createLobbyCode } from '../../lib/lobbyService'; // Importiere die Lobby-Service-Funktion
+import { createLobbyCode } from './../lib/lobbyService'; // Importiere die Lobby-Service-Funktion
 
 export default function Dashboard() {
   const [user, setUser] = useState(null); // Zustand für Benutzerinformationen
