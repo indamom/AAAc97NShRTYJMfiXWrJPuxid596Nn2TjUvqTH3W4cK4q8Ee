@@ -6,27 +6,25 @@ import { auth } from '../../lib/firebase-config'; // Korrekte Pfadangabe beachte
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 export default function Dashboard() {
-  const [user, setUser] = useState(null); // Zustand für Benutzerinformationen
+  const [user, setUser] = useState(null);
   const router = useRouter();
 
-  // Überwacht den Authentifizierungsstatus des Benutzers
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user); // Setzt den Benutzerzustand, wenn der Benutzer angemeldet ist
+        setUser(user);
       } else {
-        router.push('/'); // Weiterleitung zur Anmeldeseite, wenn nicht authentifiziert
+        router.push('/');
       }
     });
 
-    return () => unsubscribe(); // Bereinigt den Listener bei Komponentendemontage
+    return () => unsubscribe();
   }, [router]);
 
-  // Funktion für Logout
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      router.push('/'); // Weiterleitung zur Anmeldeseite nach Logout
+      router.push('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -34,7 +32,7 @@ export default function Dashboard() {
 
 
   if (!user) {
-    return <div>Loading...</div>; // Zeigt "Loading..." an, wenn der Benutzerzustand nicht gesetzt ist
+    return <div>Loading...</div>;
   }
 
   return (
