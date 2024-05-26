@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { auth } from '../../lib/firebase-config';
+import { auth } from '../../../lib/firebase-config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { createLobbyCode } from '../../lib/lobbyService';
+import { createLobbyCode } from '../../../lib/lobbyService';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
