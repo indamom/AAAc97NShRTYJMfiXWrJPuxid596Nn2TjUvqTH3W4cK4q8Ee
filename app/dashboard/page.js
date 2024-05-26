@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '../../lib/firebase-config'; // Korrekte Pfadangabe beachten
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { createLobbyCode } from '../../lib/lobbyService'; // Importiere die Lobby-Service-Funktion
 
 export default function Dashboard() {
   const [user, setUser] = useState(null); // Zustand für Benutzerinformationen
@@ -33,15 +32,6 @@ export default function Dashboard() {
     }
   };
 
-  // Funktion zum Erstellen eines neuen Lobby-Codes
-  const handleCreateGame = async () => {
-    try {
-      const key = await createLobbyCode();
-      router.push(`/lobby/${key}`); // Weiterleitung zur Lobby-Seite mit dem neuen Lobby-Code
-    } catch (error) {
-      console.error('Error creating lobby:', error);
-    }
-  };
 
   if (!user) {
     return <div>Loading...</div>; // Zeigt "Loading..." an, wenn der Benutzerzustand nicht gesetzt ist
@@ -52,8 +42,6 @@ export default function Dashboard() {
       <h1>Erfolgreich eingeloggt</h1>
       <p>Willkommen, {user.displayName}</p>
       <button onClick={handleLogout}>Logout</button>
-      <button onClick={handleCreateGame}>Create Game</button>
-      <button onClick={() => router.push('/join-game')}>Join Game</button>
     </div>
   );
 }
